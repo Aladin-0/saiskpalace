@@ -1,0 +1,6 @@
+{
+  "name": "Sai Sk Palace",
+  "description": "Luxury hotel & pilgrimage sanctuary stays in Shirdi, just steps from Shri Sai Baba Samadhi Mandir.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
