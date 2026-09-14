@@ -24,6 +24,11 @@ export function ReviewsSection() {
             className="bg-[#f5f4ef] rounded-3xl p-5 sm:p-6 flex flex-col justify-between hover:shadow-lg transition-all duration-300 border border-neutral-200/60 h-full"
           >
             <div>
+              {review.image && (
+                <div className="h-40 sm:h-48 w-full rounded-2xl overflow-hidden mb-5 bg-neutral-200">
+                  <img src={review.image} alt={review.author} className="w-full h-full object-cover" />
+                </div>
+              )}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-1 text-orange-500 text-xs">
                   <span>★</span>

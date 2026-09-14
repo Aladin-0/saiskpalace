@@ -26,6 +26,33 @@ export function HeroSection({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const formatDate = (dateStr: string) => {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return dateStr;
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = date.toLocaleString('en-US', { month: 'short' });
+    const year = date.getFullYear().toString().slice(-2);
+    return `${day} ${month} ${year}`;
+  };
+
+  const calculateNights = (inDate: string, outDate: string) => {
+    const d1 = new Date(inDate);
+    const d2 = new Date(outDate);
+    if (isNaN(d1.getTime()) || isNaN(d2.getTime())) return 1;
+    const diff = d2.getTime() - d1.getTime();
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    return days > 0 ? days : 1;
+  };
+
+  const whatsappMsg = encodeURIComponent(
+    `Hi, I would like to check availability for a booking.\n` +
+    `Destination: ${searchParams.destination}\n` +
+    `Dates: ${searchParams.checkIn} - ${searchParams.checkOut}\n` +
+    `Guests: ${searchParams.adults} Adults${searchParams.children > 0 ? `, ${searchParams.children} Children` : ''}\n` +
+    `Rooms: ${searchParams.rooms}`
+  );
+
   const destinations = [
     { name: 'Shirdi, Maharashtra', note: 'Opposite Gate 2, Temple Walk' },
     { name: 'Dwarkamai Precinct, Shirdi', note: '3 Min walk to Sacred Fire' },
@@ -51,8 +78,8 @@ export function HeroSection({
           {/* Hero Background Image */}
           <img
             alt="Luxury Hotel Suite Bedroom at Sai Sk Palace"
-            className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
-            src="https://lh3.googleusercontent.com/aida/AEtjO1Uaknq58MK_RA-Oi8CnDe5L-TSQuSALgqe4tI1_lXL6jxUVJkXK_huCUnTssRtpIqgGKOWMQyRXmclF7lyrhW6soGDZFj7gbYQIcy4rCTnwcEVODg1S3Y4nsN5TwtvdTXFLd7NdCu9qQT5FzoA3Bi83rRfixvhN4u5gCTxo-2HvSTjj_HfGowldkvuveGEzxb7_L86zURukYsbt7mimQy0AxllMydBFVDg04ui82VdICk1C1X5GFwnX4KU"
+            className="w-full h-full object-cover object-center sm:object-[center_60%] lg:object-[center_60%] transform hover:scale-105 transition-transform duration-700 ease-out"
+            src="/images/hotel.jpeg"
             loading="eager"
           />
           {/* Subtle gradient overlay at bottom */}
@@ -152,47 +179,62 @@ export function HeroSection({
                     Booking Dates
                   </span>
                   <span className="text-xs font-bold text-neutral-900 truncate block">
-                    {searchParams.checkIn} – {searchParams.checkOut}
+                    {formatDate(searchParams.checkIn)} – {formatDate(searchParams.checkOut)}
                   </span>
                 </div>
               </button>
 
               {/* Dates Popover */}
               {activeDropdown === 'dates' && (
-                <div className="absolute top-full left-0 right-0 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-72 mt-2 bg-white rounded-2xl shadow-2xl border border-neutral-100 p-4 z-50 text-left">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-2">Pilgrimage Dates</p>
-                  <div className="grid grid-cols-2 gap-2 mb-3">
-                    <div>
-                      <label className="text-[10px] text-neutral-500 block mb-1">Check-in</label>
+                <div className="absolute top-full left-0 right-0 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-80 mt-3 bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-neutral-100/80 p-5 z-50 text-left backdrop-blur-xl animate-in fade-in zoom-in duration-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-[11px] font-extrabold uppercase tracking-widest text-neutral-400">Select Dates</p>
+                    <span className="bg-orange-50 text-orange-600 text-[10px] font-bold px-2 py-1 rounded-full">
+                      {calculateNights(searchParams.checkIn, searchParams.checkOut)} Night{calculateNights(searchParams.checkIn, searchParams.checkOut) > 1 ? 's' : ''}
+                    </span>
+                  </div>
+                  
+                  <div className="flex gap-3 mb-5">
+                    <div className="flex-1 bg-neutral-50 rounded-2xl p-3 border border-neutral-100 transition-colors focus-within:border-orange-300 focus-within:bg-orange-50/30">
+                      <label className="text-[10px] font-bold text-neutral-500 uppercase tracking-wide block mb-1.5">Check-in</label>
                       <input
-                        type="text"
+                        type="date"
                         value={searchParams.checkIn}
                         onChange={(e) => onUpdateParams({ checkIn: e.target.value })}
-                        className="w-full text-xs font-semibold px-2.5 py-1.5 border border-neutral-200 rounded-lg focus:outline-none focus:border-orange-500"
-                        placeholder="29 Oct 24"
+                        onClick={(e) => {
+                          try {
+                            (e.target as HTMLInputElement).showPicker();
+                          } catch (err) {}
+                        }}
+                        className="w-full text-sm font-bold text-neutral-900 bg-transparent focus:outline-none cursor-pointer"
+                        min={new Date().toISOString().split('T')[0]}
                       />
                     </div>
-                    <div>
-                      <label className="text-[10px] text-neutral-500 block mb-1">Check-out</label>
+                    
+                    <div className="flex-1 bg-neutral-50 rounded-2xl p-3 border border-neutral-100 transition-colors focus-within:border-orange-300 focus-within:bg-orange-50/30">
+                      <label className="text-[10px] font-bold text-neutral-500 uppercase tracking-wide block mb-1.5">Check-out</label>
                       <input
-                        type="text"
+                        type="date"
                         value={searchParams.checkOut}
                         onChange={(e) => onUpdateParams({ checkOut: e.target.value })}
-                        className="w-full text-xs font-semibold px-2.5 py-1.5 border border-neutral-200 rounded-lg focus:outline-none focus:border-orange-500"
-                        placeholder="30 Oct 24"
+                        onClick={(e) => {
+                          try {
+                            (e.target as HTMLInputElement).showPicker();
+                          } catch (err) {}
+                        }}
+                        className="w-full text-sm font-bold text-neutral-900 bg-transparent focus:outline-none cursor-pointer"
+                        min={searchParams.checkIn || new Date().toISOString().split('T')[0]}
                       />
                     </div>
                   </div>
-                  <div className="flex justify-between items-center pt-2 border-t border-neutral-100">
-                    <span className="text-[11px] text-neutral-500">1 Night Stay</span>
-                    <button
-                      type="button"
-                      onClick={() => setActiveDropdown(null)}
-                      className="px-3 py-1 bg-orange-500 text-white rounded-full text-xs font-semibold hover:bg-orange-600 cursor-pointer"
-                    >
-                      Done
-                    </button>
-                  </div>
+                  
+                  <button
+                    type="button"
+                    onClick={() => setActiveDropdown(null)}
+                    className="w-full py-3 bg-orange-500 text-white rounded-2xl text-sm font-bold hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20 active:scale-[0.98]"
+                  >
+                    Confirm Dates
+                  </button>
                 </div>
               )}
             </div>
@@ -295,22 +337,19 @@ export function HeroSection({
             </div>
 
             {/* Submit CTA Button */}
-            <button
+            <a
               id="search-submit-btn"
-              type="button"
-              aria-label="Search accommodations"
-              onClick={onSearch}
+              href={`https://wa.me/917350049191?text=${whatsappMsg}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Book Now"
               className="w-full sm:w-11 h-11 rounded-xl sm:rounded-full bg-orange-500 hover:bg-orange-600 active:scale-95 text-white flex items-center justify-center shrink-0 transition-all shadow-md mt-1 sm:mt-0 cursor-pointer gap-2"
             >
-              <svg className="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+              <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
               </svg>
-              <span className="sm:hidden font-bold text-xs">Check Availability</span>
-            </button>
+              <span className="sm:hidden font-bold text-xs">Book Now</span>
+            </a>
           </div>
         </div>
       </div>

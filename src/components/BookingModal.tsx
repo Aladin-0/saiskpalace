@@ -104,7 +104,7 @@ export function BookingModal({
                 Reserve Your Stay
               </h3>
               <p className="text-xs text-neutral-600 mt-1">
-                Direct booking with 0% cancellation fee and guaranteed Kakad Aarti assistance.
+                Advance booking ₹1000 Compulsory. Final rate, no bargaining please. No GST, No Service Tax.
               </p>
             </div>
 
@@ -119,13 +119,12 @@ export function BookingModal({
                   onChange={(e) => setSelectedSuite(e.target.value)}
                   className="w-full bg-white border border-neutral-200 rounded-xl px-3.5 py-2.5 text-xs text-neutral-900 font-semibold focus:outline-none focus:border-orange-500"
                 >
-                  <option value="Deluxe Room">Deluxe Room (King / Twin)</option>
-                  <option value="Family Pilgrim Suite">Family Pilgrim Suite (4-6 Devotees)</option>
-                  <option value="Executive Balcony Suite">Executive Balcony Suite (Temple View)</option>
-                  <option value="Accessible Ground Floor Suite">Accessible Ground Floor Suite (Step-free)</option>
-                  <option value="Oxford Artisan">Oxford Artisan Tour &amp; Stay</option>
-                  <option value="Oxford Walking Tour">Oxford Walking Tour &amp; Stay</option>
-                  <option value="Malmaison Oxford">Malmaison Oxford Heritage Suite</option>
+                  <option value="Double Bed Non AC - ₹1299">Double Bed Non AC - ₹1299</option>
+                  <option value="Double Bed Deluxe AC - ₹1499">Double Bed Deluxe AC - ₹1499</option>
+                  <option value="Triple Bed Non AC - ₹1699">Triple Bed Non AC - ₹1699</option>
+                  <option value="Classic Triple Bed AC - ₹2000">Classic Triple Bed AC - ₹2000</option>
+                  <option value="Family 4 Bed Non AC - ₹2199">Family 4 Bed Non AC - ₹2199</option>
+                  <option value="Family 4 Bed Deluxe AC - ₹2499">Family 4 Bed Deluxe AC - ₹2499</option>
                 </select>
               </div>
 

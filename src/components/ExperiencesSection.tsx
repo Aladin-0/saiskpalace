@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { EXPERIENCES_DATA } from '../data/hotelData';
 import { ExperienceItem, TravelTab } from '../types';
 
@@ -11,16 +12,40 @@ export function ExperiencesSection({
   onSelectExperience,
   onOpenCuratedTours
 }: ExperiencesSectionProps) {
-  const [activeTab, setActiveTab] = useState<TravelTab>('Activity');
-  const tabs: TravelTab[] = ['Flights', 'Trains', 'Bus & Travel', 'Activity'];
+  const [activeTab, setActiveTab] = useState<TravelTab>('Our Rooms');
+  const [realRooms, setRealRooms] = useState<ExperienceItem[]>([]);
+  const tabs: TravelTab[] = ['Happy Customer', 'Our Rooms', 'Hotel Exteriors/Lobby'];
+  const navigate = useNavigate();
 
-  const currentItems = EXPERIENCES_DATA[activeTab] || EXPERIENCES_DATA['Activity'];
+  useEffect(() => {
+    fetch('/api/rooms')
+      .then(res => res.json())
+      .then((data: any[]) => {
+        const mappedRooms = data.slice(0, 7).map(room => ({
+          id: room.id || room._id,
+          title: room.title,
+          location: room.location || room.bedType || 'Sai Sk Palace',
+          price: room.price,
+          rating: 5,
+          image: (room.images && room.images.length > 0) ? room.images[0] : (room.image || '/images/room3.jpeg'),
+          category: 'Our Rooms',
+          description: room.description || room.features
+        }));
+        setRealRooms(mappedRooms);
+      })
+      .catch(err => console.error('Error fetching rooms:', err));
+  }, []);
+
+  let currentItems = EXPERIENCES_DATA[activeTab] || EXPERIENCES_DATA['Happy Customer'];
+  if (activeTab === 'Our Rooms') {
+    currentItems = realRooms;
+  }
 
   return (
     <section className="mt-12 sm:mt-20" data-purpose="activities-and-tours">
       {/* Section Title */}
       <h2 className="text-center font-bold text-xl md:text-2xl text-neutral-900 text-title-smooth tracking-tight mb-4 sm:mb-5">
-        Seamless travel &amp; experiences
+        Discover Sai Sk Palace
       </h2>
 
       {/* Segmented Category Pill Tabs */}
@@ -53,7 +78,13 @@ export function ExperiencesSection({
           <article
             key={item.id}
             id={`experience-card-${item.id}`}
-            onClick={() => onSelectExperience(item)}
+            onClick={() => {
+              if (activeTab === 'Our Rooms') {
+                navigate(`/room/${item.id}`);
+              } else {
+                onSelectExperience(item);
+              }
+            }}
             className="bg-[#f5f4ef] rounded-3xl p-3.5 flex flex-col justify-between hover:shadow-lg transition-all duration-300 border border-neutral-200/60 h-full group cursor-pointer"
           >
             <div>
@@ -96,18 +127,25 @@ export function ExperiencesSection({
                 <span>★</span>
                 <span>★</span>
               </div>
-              <div className="text-right flex items-baseline gap-1">
-                <span className="text-xs text-neutral-400">from</span>
-                <span className="text-lg font-bold text-neutral-900">${item.price}</span>
-              </div>
+              {item.price > 0 && (
+                <div className="font-display font-bold text-base text-neutral-900">
+                  ₹{item.price} <span className="text-[10px] text-neutral-500 font-normal">/ night</span>
+                </div>
+              )}
             </div>
           </article>
         ))}
 
-        {/* Card 4: Orange Call-to-Action Card */}
+        {/* Card: Orange Call-to-Action Card */}
         <div
           id="btn-curated-tours-card"
-          onClick={() => onOpenCuratedTours(activeTab)}
+          onClick={() => {
+            if (activeTab === 'Our Rooms') {
+              navigate('/rooms');
+            } else {
+              onOpenCuratedTours(activeTab);
+            }
+          }}
           className="bg-orange-500 text-white rounded-3xl p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden shadow-lg group cursor-pointer hover:bg-orange-600 transition-colors h-full border border-orange-400/40 min-h-[260px] sm:min-h-[300px]"
         >
           {/* Background Abstract Decorative Shape */}

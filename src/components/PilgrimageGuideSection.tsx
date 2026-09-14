@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { SACRED_PLACES } from '../data/hotelData';
 
 interface PilgrimageGuideSectionProps {
@@ -11,6 +12,22 @@ export function PilgrimageGuideSection({
 }: PilgrimageGuideSectionProps) {
   const featured = SACRED_PLACES.slice(0, 2);
   const secondary = SACRED_PLACES.slice(2);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (scrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        if (scrollLeft + clientWidth >= scrollWidth - 20) {
+          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Scroll exactly one card width (approx 320px)
+          scrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+        }
+      }
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="mt-12 sm:mt-20" data-purpose="pilgrimage-darshan-guide">
@@ -89,14 +106,17 @@ export function PilgrimageGuideSection({
         ))}
       </div>
 
-      {/* Three Secondary Destination Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-stretch">
+      {/* Secondary Destination Cards - Automatic Horizontal Slider */}
+      <div 
+        ref={scrollRef}
+        className="flex overflow-x-auto gap-4 mb-6 pb-4 snap-x hide-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
+      >
         {secondary.map((place) => (
           <article
             key={place.id}
             id={`sacred-secondary-${place.id}`}
             onClick={() => onOpenSiteDetail(place.name)}
-            className="bg-[#f5f4ef] rounded-3xl p-3.5 flex flex-col justify-between hover:shadow-lg transition-all duration-300 border border-neutral-200/60 h-full group cursor-pointer"
+            className="w-[280px] sm:w-[320px] shrink-0 snap-center bg-[#f5f4ef] rounded-3xl p-3.5 flex flex-col justify-between hover:shadow-lg transition-all duration-300 border border-neutral-200/60 group cursor-pointer"
           >
             <div>
               <div className="h-48 w-full rounded-2xl overflow-hidden mb-3">
@@ -108,14 +128,14 @@ export function PilgrimageGuideSection({
                 />
               </div>
               <div className="flex items-center justify-between gap-2 mb-2">
-                <h3 className="font-bold text-sm text-neutral-900 leading-tight group-hover:text-orange-600 transition-colors">
+                <h3 className="font-bold text-sm text-neutral-900 leading-tight group-hover:text-orange-600 transition-colors line-clamp-1">
                   {place.name}
                 </h3>
                 <span className="text-[11px] font-bold text-orange-500 shrink-0 bg-orange-500/10 px-2.5 py-0.5 rounded-full">
                   {place.badge}
                 </span>
               </div>
-              <p className="text-xs text-neutral-600 leading-relaxed">
+              <p className="text-xs text-neutral-600 leading-relaxed line-clamp-3">
                 {place.description}
               </p>
             </div>
@@ -123,37 +143,6 @@ export function PilgrimageGuideSection({
         ))}
       </div>
 
-      {/* Bottom Etiquette & Logistics Callout Bar */}
-      <div className="bg-[#f5f4ef] rounded-3xl p-4 sm:p-6 border border-neutral-200/80 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-5">
-        <div className="flex items-start gap-3 sm:gap-4 flex-1">
-          <div className="w-10 h-10 rounded-full bg-orange-500/10 text-orange-500 flex items-center justify-center shrink-0 mt-0.5">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" x2="12" y1="16" y2="12" />
-              <line x1="12" x2="12.01" y1="8" y2="8" />
-            </svg>
-          </div>
-          <div>
-            <h4 className="font-bold text-sm sm:text-base text-neutral-900 mb-1">
-              Important Darshan Etiquette &amp; Logistics
-            </h4>
-            <p className="text-xs text-neutral-600 leading-relaxed max-w-3xl">
-              Mobile phones and cameras are prohibited inside Samadhi Mandir and Dwarkamai. Complimentary secure cloakrooms and shoe stands are available at Gate 2 and Gate 4. Sai Sk Palace provides early morning Aarti alarm calls and direct battery cart assistance for senior citizens.
-            </p>
-          </div>
-        </div>
-        <button
-          id="btn-download-temple-schedule"
-          type="button"
-          onClick={onOpenTempleSchedule}
-          className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 bg-[#181818] hover:bg-black text-white text-xs font-semibold px-5 py-3 rounded-full transition-all shadow-sm active:scale-95 cursor-pointer"
-        >
-          <span>Download Temple Map &amp; Schedule</span>
-          <svg className="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path d="M14 5l7 7m0 0l-7 7m7-7H3" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      </div>
     </section>
   );
 }

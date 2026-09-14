@@ -1,0 +1,60 @@
+{
+  "rooms": [
+    {
+      "id": "1789144169584",
+      "title": "Luxury Suite",
+      "description": "Experience the ultimate luxury with a panoramic view and top-tier amenities.",
+      "price": 3500,
+      "location": "top floor",
+      "features": "wifi,ac,hotwater,tv,gym,spa",
+      "images": [],
+      "bedType": "King Bed",
+      "acType": "Central AC"
+    },
+    {
+      "id": "1789144169585",
+      "title": "Family Deluxe",
+      "description": "Spacious room perfect for the whole family, featuring multiple beds and extra comfort.",
+      "price": 2800,
+      "location": "2nd wing",
+      "features": "wifi,ac,tv,parking",
+      "images": [],
+      "bedType": "Two Double Beds",
+      "acType": "AC"
+    },
+    {
+      "id": "1789146198430",
+      "title": "Exclusive Twin Beds Room in graound floor with AC & Free Wi-Fi | Sai Sk Palace",
+      "description": "Experience the ultimate comfort in our exclusive Twin Beds room, perfectly situated in the graound floor. Designed for both relaxation and convenience, this beautiful accommodation features AC. Guests will enjoy exclusive access to premium amenities including power backup and high-speed Wi-Fi. Book your stay today for just ₹1400/night and enjoy a flagship experience at Sai Sk Palace!",
+      "price": 1400,
+      "location": "graound floor",
+      "features": "generator,lift,wifi",
+      "images": [
+        "/uploads/1789146198333.png"
+      ],
+      "bedType": "Twin Beds",
+      "acType": "AC"
+    },
+    {
+      "id": "1789150077779",
+      "title": "Comfortable Double Bed Room in first floor with AC & Parking | Sai Sk Palace, Shirdi",
+      "description": "Experience the ultimate comfort in our comfortable Double Bed room, perfectly situated in the first floor wing. Designed for both relaxation and convenience during your Shirdi visit, this beautiful accommodation features AC. Guests will enjoy exclusive access to premium amenities including secure parking and 24/7 hot water. Book your stay today for just ₹1200/night and enjoy a flagship experience at Sai Sk Palace, Shirdi!",
+      "price": 1200,
+      "location": "first floor",
+      "features": "parking,hotwater",
+      "images": [
+        "/uploads/1789150077681.png",
+        "/uploads/1789150077766.png"
+      ],
+      "bedType": "Double Bed",
+      "acType": "AC"
+    }
+  ],
+  "admins": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "$2b$10$RZ2Bg2DNf.wdPs/bBpsOCurxIWpe1hJQBQ7FAXZG3EbQNeJ9S2Asu"
+    }
+  ]
+}

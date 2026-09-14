@@ -1,4 +1,4 @@
-export type TravelTab = 'Flights' | 'Trains' | 'Bus & Travel' | 'Activity';
+export type TravelTab = 'Happy Customer' | 'Our Rooms' | 'Hotel Exteriors/Lobby';
 
 export interface ExperienceItem {
   id: string;
@@ -25,6 +25,7 @@ export interface ReviewItem {
   quote: string;
   author: string;
   stayDate: string;
+  image?: string;
   initials: string;
   avatarBg: string;
   avatarTextColor: string;

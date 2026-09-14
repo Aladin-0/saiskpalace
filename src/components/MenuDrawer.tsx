@@ -92,16 +92,16 @@ export function MenuDrawer({
               <span className="text-orange-500">✦</span>
               <span>Aarti Timetable (Shirdi Trust)</span>
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                onOpenBooking();
-                onClose();
-              }}
-              className="w-full py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold shadow-md transition-colors text-center"
+            <a
+              href="tel:+917350049191"
+              onClick={onClose}
+              className="w-full py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold shadow-md transition-colors flex items-center justify-center gap-2"
             >
-              Reserve Room or Suite
-            </button>
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z" />
+              </svg>
+              Call: +91 7350049191
+            </a>
           </div>
         </div>
 
@@ -111,13 +111,13 @@ export function MenuDrawer({
             Direct Concierge Assistance
           </p>
           <a
-            href="tel:+919730416763"
+            href="tel:+917350049191"
             className="text-sm font-bold text-neutral-900 hover:text-orange-600 transition-colors block"
           >
-            +91 9730416763
+            +91 7350049191
           </a>
           <p className="text-[11px] text-neutral-500 mt-1">
-            Opposite Temple Gate 2, Shirdi, Maharashtra 423109
+            Shirdi Yog Marg Near Neeta Bus Parking Pimple Wadi Road, Maharashtra 423109
           </p>
         </div>
       </div>
