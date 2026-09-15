@@ -67,8 +67,8 @@ export function LocationSection() {
         <div className="md:col-span-2 lg:col-span-1 bg-[#ded9ce] rounded-[2rem] p-6 flex flex-col justify-center items-center text-center border border-neutral-300/50 shadow-sm relative overflow-hidden group">
           <div className="absolute inset-0 bg-white/20 group-hover:bg-white/40 transition-colors pointer-events-none"></div>
           <div className="absolute -right-8 -top-8 w-32 h-32 bg-orange-300/40 rounded-full blur-2xl pointer-events-none"></div>
-          <span className="font-display font-bold text-5xl sm:text-6xl text-orange-600 mb-1 tracking-tighter">5<span className="text-2xl sm:text-3xl text-orange-500/80">min</span></span>
-          <p className="font-bold text-neutral-800 text-xs sm:text-sm uppercase tracking-widest mt-1 text-center">Walk to Temple</p>
+          <span className="font-display font-bold text-3xl sm:text-4xl text-orange-600 mb-1 tracking-tighter text-center leading-none">Just Walking <span className="text-xl sm:text-2xl text-orange-500/80">Distance</span></span>
+          <p className="font-bold text-neutral-800 text-xs sm:text-sm uppercase tracking-widest mt-2 text-center">From Temple</p>
         </div>
 
         {/* Action Button Box */}

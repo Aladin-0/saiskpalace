@@ -33,56 +33,96 @@ export function AmenitiesSection() {
       case 'lift':
         return (
           <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-            <path d="M12 8l-3 3h6z" />
-            <path d="M12 16l-3-3h6z" />
-            <path d="M12 11v5" />
+            <path d="M8 9l4-4 4 4" />
+            <path d="M16 15l-4 4-4-4" />
+            <path d="M12 5v14" />
           </svg>
         );
-      case 'accessible':
+      case 'water':
         return (
           <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
-            <circle cx="12" cy="4" r="1.5" />
-            <path d="M18 19l-4-4h-3v-5a2 2 0 0 0-2-2H8" />
-            <path d="M13 15v5" />
-            <circle cx="9" cy="18" r="3" />
+            <path d="M12 22a6 6 0 0 0 6-6c0-4-6-10-6-10S6 12 6 16a6 6 0 0 0 6 6z" />
+            <path d="M12 18v-4" />
           </svg>
         );
-      case 'pool':
+      case 'generator':
         return (
           <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
-            <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
-            <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
-            <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
         );
-      case 'climate':
+      case 'solar':
         return (
           <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
-            <path d="M8 16a3 3 0 0 1-3-3 3 3 0 0 1 3-3h12" />
-            <path d="M5 19a2 2 0 0 1-2-2 2 2 0 0 1 2-2h14" />
-            <path d="M11 6a3 3 0 0 1-3 3H2" />
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="M4.93 4.93l1.41 1.41" />
+            <path d="M17.66 17.66l1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="M6.34 17.66l-1.41 1.41" />
+            <path d="M19.07 4.93l-1.41 1.41" />
           </svg>
         );
-      case 'business':
+      case 'tv':
         return (
           <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
-            <rect height="14" rx="2" width="20" x="2" y="7" />
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+            <rect x="2" y="7" width="20" height="15" rx="2" ry="2" />
+            <polyline points="17 2 12 7 7 2" />
           </svg>
         );
-      case 'room-service':
+      case 'spa':
         return (
           <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-            <circle cx="12" cy="3" r="1" />
+            <path d="M6.5 9.5c0-3.5 2.5-6.5 5.5-6.5s5.5 3 5.5 6.5" />
+            <path d="M12 3c-2.5 0-5-2-5-2s-3.5 1-3.5 4 2.5 4.5 2.5 4.5" />
+            <path d="M8.5 12c0 3 1.5 5 3.5 5s3.5-2 3.5-5" />
+            <path d="M9.5 11.5c.3.3.7.3 1 0" />
+            <path d="M13.5 11.5c.3.3.7.3 1 0" />
+            <path d="M12 13.5v1" />
+            <path d="M11.5 15.5c.3.3.7.3 1 0" />
+            <path d="M4 9.5c0 3 1.5 6 3 8" />
+            <path d="M20 9.5c0 3-1.5 6-3 8" />
+            <path d="M11 17v2c-2.5 1-5.5 1.5-7.5 1.5" />
+            <path d="M13 17v2c2.5 1 5.5 1.5 7.5 1.5" />
+          </svg>
+        );
+      case 'conference':
+        return (
+          <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        );
+      case 'garden':
+        return (
+          <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
+            <path d="M10 10v.2A3 3 0 0 1 8.9 16v0H5v0h0a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z" />
+            <path d="M7 16v6" />
+            <path d="M13 19v3" />
+            <path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5" />
           </svg>
         );
       case 'shuttle':
         return (
           <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
-            <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+            <circle cx="7" cy="17" r="2" />
+            <path d="M9 17h6" />
+            <circle cx="17" cy="17" r="2" />
+          </svg>
+        );
+      case 'room-service':
+        return (
+          <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
+            <polyline points="20 12 20 22 4 22 4 12" />
+            <rect x="2" y="7" width="20" height="5" />
+            <line x1="12" x2="12" y1="22" y2="7" />
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
           </svg>
         );
       case 'fitness':
@@ -97,14 +137,12 @@ export function AmenitiesSection() {
             <path d="m14 21 7-7" />
           </svg>
         );
-      case 'smoke-free':
       default:
         return (
           <svg className={className} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24">
-            <line x1="18" x2="22" y1="12" y2="12" />
-            <line x1="18" x2="22" y1="16" y2="16" />
-            <path d="M2 12h12a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2v-4z" />
-            <line x1="2" x2="22" y1="2" y2="22" />
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4" />
+            <path d="M12 16h.01" />
           </svg>
         );
     }
