@@ -95,7 +95,7 @@ export function RoomDetailsPage() {
   );
 
   return (
-    <div className="font-sans text-neutral-900 pb-20 lg:pb-16">
+    <div className="font-sans text-neutral-900">
 
       {/* ━━━ Lightbox ━━━ */}
       {lightboxOpen && (
@@ -399,8 +399,8 @@ export function RoomDetailsPage() {
 
         {/* ━━━ Suggested Rooms ━━━ */}
         {suggestedRooms.length > 0 && (
-          <div className="mt-8 pt-8 sm:mt-20 sm:pt-16 border-t border-neutral-200">
-            <div className="flex items-end justify-between mb-6 sm:mb-10">
+          <div className="mt-10 pt-8 lg:mt-12 lg:pt-10 border-t border-neutral-200">
+            <div className="flex items-end justify-between mb-6 sm:mb-8">
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-widest text-[#c25a1b] mb-1.5 sm:mb-2">Explore More</p>
                 <h2 className="font-display font-bold text-2xl sm:text-3xl text-neutral-900">You May Also Like</h2>
@@ -410,7 +410,7 @@ export function RoomDetailsPage() {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
               </Link>
             </div>
-            <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible pb-6 sm:pb-0 snap-x hide-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible pb-4 sm:pb-0 snap-x hide-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
               {suggestedRooms.map(sRoom => {
                 const sImg = (sRoom.images && sRoom.images.length > 0) ? sRoom.images[0] : (sRoom.image || '/images/room3.jpeg');
                 const sFeatures = Array.isArray(sRoom.features) ? sRoom.features : (typeof sRoom.features === 'string' ? sRoom.features.split(',').map(f => f.trim()).filter(Boolean) : []);
