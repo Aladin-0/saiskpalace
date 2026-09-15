@@ -95,7 +95,7 @@ export function RoomDetailsPage() {
   );
 
   return (
-    <div className="font-sans text-neutral-900 pb-24 lg:pb-20">
+    <div className="font-sans text-neutral-900 pb-20 lg:pb-16">
 
       {/* ━━━ Lightbox ━━━ */}
       {lightboxOpen && (
@@ -399,11 +399,11 @@ export function RoomDetailsPage() {
 
         {/* ━━━ Suggested Rooms ━━━ */}
         {suggestedRooms.length > 0 && (
-          <div className="mt-20 pt-16 border-t border-neutral-200">
-            <div className="flex items-end justify-between mb-10">
+          <div className="mt-8 pt-8 sm:mt-20 sm:pt-16 border-t border-neutral-200">
+            <div className="flex items-end justify-between mb-6 sm:mb-10">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-widest text-[#c25a1b] mb-2">Explore More</p>
-                <h2 className="font-display font-bold text-3xl text-neutral-900">You May Also Like</h2>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-[#c25a1b] mb-1.5 sm:mb-2">Explore More</p>
+                <h2 className="font-display font-bold text-2xl sm:text-3xl text-neutral-900">You May Also Like</h2>
               </div>
               <Link to="/rooms" className="hidden md:flex items-center gap-2 text-[12px] font-bold text-neutral-500 hover:text-[#c25a1b] transition-colors">
                 View All Rooms
