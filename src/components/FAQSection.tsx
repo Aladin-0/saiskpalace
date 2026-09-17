@@ -41,7 +41,7 @@ export function FAQSection() {
   };
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 max-w-[1000px] mx-auto" data-purpose="seo-faq">
+    <section className="pt-10 sm:pt-16 pb-16 sm:pb-24 px-4 sm:px-6 max-w-[1000px] mx-auto" data-purpose="seo-faq">
       {/* Inject Schema for Answer Engine Optimization */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 

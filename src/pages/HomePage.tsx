@@ -42,11 +42,11 @@ export function HomePage({
       <LocationSection />
       <AmenitiesSection />
       <ReviewsSection />
-      <FAQSection />
       <PilgrimageGuideSection
         onOpenTempleSchedule={onOpenTempleSchedule}
         onOpenSiteDetail={onOpenSiteDetail}
       />
+      <FAQSection />
     </>
   );
 }
