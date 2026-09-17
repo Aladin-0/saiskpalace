@@ -140,7 +140,7 @@ export function RoomDetailsPage() {
                 <button key={idx} onClick={() => setActiveImage(img)}
                   className={`snap-start flex-shrink-0 w-[100px] h-[70px] rounded-[1rem] overflow-hidden relative transition-all ring-2 ${activeImage === img ? 'ring-[#c25a1b] shadow-md shadow-[#c25a1b]/20 scale-[0.97]' : 'ring-transparent opacity-70 hover:opacity-100'}`}
                 >
-                  <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img src={img} alt={`${room.title} - Detailed View ${idx + 1} at Hotel Sai SK Palace Shirdi`} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
@@ -168,7 +168,7 @@ export function RoomDetailsPage() {
               <button key={idx} onClick={() => setActiveImage(img)}
                 className={`flex-shrink-0 w-full flex-1 rounded-2xl overflow-hidden relative transition-all duration-300 ring-2 ${activeImage === img ? 'ring-[#c25a1b] shadow-lg shadow-[#c25a1b]/25 scale-[0.97]' : 'ring-transparent opacity-60 hover:opacity-100 hover:scale-[1.02]'}`}
               >
-                <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
+                <img src={img} alt={`${room.title} - Interior View ${idx + 1} at Hotel Sai SK Palace`} className="w-full h-full object-cover" />
                 {activeImage === img && <div className="absolute inset-0 bg-[#c25a1b]/10 flex items-center justify-center"><div className="w-3 h-3 rounded-full bg-[#c25a1b] shadow-lg"></div></div>}
               </button>
             ))}

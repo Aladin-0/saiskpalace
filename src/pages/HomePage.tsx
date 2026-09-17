@@ -4,6 +4,7 @@ import { LocationSection } from '../components/LocationSection';
 import { AmenitiesSection } from '../components/AmenitiesSection';
 import { ReviewsSection } from '../components/ReviewsSection';
 import { PilgrimageGuideSection } from '../components/PilgrimageGuideSection';
+import { FAQSection } from '../components/FAQSection';
 import { VideoGallerySection } from '../components/VideoGallerySection';
 import { ExperienceItem, SearchParams, TravelTab } from '../types';
 
@@ -41,6 +42,7 @@ export function HomePage({
       <LocationSection />
       <AmenitiesSection />
       <ReviewsSection />
+      <FAQSection />
       <PilgrimageGuideSection
         onOpenTempleSchedule={onOpenTempleSchedule}
         onOpenSiteDetail={onOpenSiteDetail}
